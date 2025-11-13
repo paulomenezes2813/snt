@@ -1,0 +1,15 @@
+[project]
+name = "snt"
+
+[services.api]
+rootDirectory = "apps/api"
+buildCommand = "npm ci && npm run prisma:generate && npm run build"
+startCommand = "npm run prisma:deploy && node dist/index.js"
+
+[services.web]
+rootDirectory = "apps/web"
+# Vamos servir o build com o preview do Vite (bind no $PORT do Railway)
+buildCommand = "npm ci && npm run build"
+startCommand = "npm run start"
+
+
