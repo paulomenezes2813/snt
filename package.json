@@ -1,0 +1,20 @@
+{
+  "name": "dashboard-snt",
+  "private": true,
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c green,blue \"npm:dev -w apps/api\" \"npm:dev -w apps/web\"",
+    "build": "npm -w apps/api run build && npm -w apps/web run build",
+    "start": "npm -w apps/api run start",
+    "prisma:migrate": "npm -w apps/api run prisma:migrate",
+    "prisma:seed": "npm -w apps/api run prisma:seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
+
+
